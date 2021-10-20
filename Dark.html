@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<title>Virtual Calculator</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+				<script src="https://kit.fontawesome.com/d5fa852aeb.js" crossorigin="anonymous"></script>
+				<style>
+								body{
+											#	background: linear-gradient(to top, #1b2029, #112c34);
+												height: 100vh;
+												display: flex;
+												align-items: center;
+												justify-content: center;
+												flex-direction: column;
+								}
+								 .input{
+  				text-align:right;
+  			 width: 220px;
+  			 height: 32px;
+  			 padding: 10px;
+  			 border-radius: 40px;
+  			 background: rgba(255, 255, 255, 0.1);
+  			
+  			 border: none;
+  			 outline: none;
+  			 margin-bottom: 16px;
+  			 margin-top: 10px;
+				font-size: 20px;
+  			 font-family: 'Roboto', sans-serif;
+  			 box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  			 transition: background 0.2s linear;
+  }
+  .label {
+  width: 50px;
+  height: 20px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+  color: white;
+}
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+ .container{
+			 padding: 20px;
+			 margin: 0 auto;
+			 border-radius: 20px;
+			 margin-top: 50px;
+			 box-shadow: 3px 3px 15px rgba(0,0,0, 0.1);
+			 background: rgba(255, 255, 255, 0.1);
+			 backdrop-filter: blur(2rem)
+			 
+		 	 z-index: 1;
+ }
+.div{
+ 				display: flex;
+ 				align-items: center;
+ 				justify-content: center;
+ }							body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+button {
+	 color: black;
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  background: none;
+  padding: 0.8rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  outline: 0;
+  border: 0;
+  width:45px;
+  height:45px;
+  margin: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);  	/*black with 30% opacity */
+  /*cursor: pointer;*/
+ /* border: 0.001px solid #55c1ff;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span.ripple {
+	
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+  
+}
+.o{
+				color: #ff7300;
+				
+}
+.e{
+			 color: #fff;
+			 background: #ff7300;
+}
+/*body::before{
+  content: '';
+		width: 300px;
+		height: 300px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		clip-path: circle(70% at right 30%);
+		background: linear-gradient(#ff7455, #5000ff);
+		z-index: 0;
+		
+}*/
+/*body::after{
+				
+}*/
+.c{
+				margin: 0;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;		
+				margin: 0 auto;	
+}
+.checkbox{opacity: 0;position: absolute;}
+
+body.dark {
+  background-color: #292c35;
+}
+.checkbox:checked + .label .ball{
+  transform: translateX(30px);
+}
+.d{color: white;}
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
+				</style>
+</head>
+<body>
+				<div class="c">
+    <input type="checkbox" class="checkbox" id="checkbox">
+  <label for="checkbox" class="label">
+    <i class="fas fa-moon"></i>
+    <i class='fas fa-sun'></i>
+    <div class='ball'>
+    	</div>
+  </label>
+</div>
+
+				<div class="container">
+								
+								<input class="input" placeholder="0" type="text" disabled></input>
+				<div class="div">
+								<button class="o" type="button" onclick="document.querySelector('.input').value =''">C</button>
+								<button class="o"type="button" onclick="document.querySelector('.input').value = document.querySelector('.input').value.slice(0, document.querySelector('.input').value.length -1) "><i class="fas fa-backspace"></i></button>
+								<button class="o" onclick="document.querySelector('.input').value +='%'">%</button>
+								<button class="o" onclick="document.querySelector('.input').value +='+'">+</button>
+				</div>
+				<div class="div">
+								<button class='s' onclick="document.querySelector('.input').value +='9'">9</button>
+								<button class='s' onclick="document.querySelector('.input').value +='8'">8</button>
+								<button class='s' onclick="document.querySelector('.input').value +='7'">7</button>
+								<button class="o" onclick="document.querySelector('.input').value +='/'">÷</button>
+				</div>
+				<div class="div">
+								<button class='s' onclick="document.querySelector('.input').value +='6'">6</button>
+								<button class='s'  onclick="document.querySelector('.input').value +='5'">5</button>
+								<button class='s' onclick="document.querySelector('.input').value +='4'">4</button>
+								<button class="o" onclick="document.querySelector('.input').value +='*'">×</button>
+				</div>
+				<div class="div">
+								<button class='s' onclick="document.querySelector('.input').value +='3'">3</button>
+								<button class='s' onclick="document.querySelector('.input').value +='2'">2</button>
+								<button class='s' onclick="document.querySelector('.input').value +='1'">1</button>
+							 <button class="o" onclick="document.querySelector('.input').value +='-'">-</button>
+				</div>
+				
+				<div class="div">
+								<button class='s' onclick="document.querySelector('.input').value +='0'">0</button>
+								<button class='s' onclick="document.querySelector('.input').value +='00'">00</button>
+								<button class='s' onclick="document.querySelector('.input').value +='.'">.</button>
+								<button class="e" onclick="try{document.querySelector('.input').value =eval(document.querySelector('.input').value)}catch{document.querySelector('.input').value ='Error'	}">=</button>
+				</div>
+				</div>
+<!-- <button style="background: blue">Hello</button>-->
+<script>
+				function createRipple(event) {
+  const button = event.currentTarget;
+
+  const circle = document.createElement("span");
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
+
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+  circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+  circle.style.background="#00abff";
+  circle.style.opacity='0.3';
+  circle.classList.add("ripple");
+  
+
+  const ripple = button.getElementsByClassName("ripple")[0];
+
+  if (ripple) {
+    ripple.remove();
+  }
+
+  button.appendChild(circle);
+}
+
+const buttons = document.getElementsByTagName("button");
+for (const button of buttons) {
+  button.addEventListener("click", createRipple);
+}
+
+</script>
+
+<script>
+				const checkbox = document.getElementById('checkbox');
+				btn = document.querySelectorAll(".s")
+				i = document.querySelector(".input")
+checkbox.addEventListener('change', ()=>{
+  document.body.classList.toggle('dark');
+  for (b of btn){
+  b.classList.toggle('d');
+  
+  
+  }
+  i.classList.toggle('d');
+})
+</script>
+</body>
+</html>
